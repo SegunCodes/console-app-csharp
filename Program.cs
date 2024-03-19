@@ -1,36 +1,48 @@
-﻿//switch statement
-using System;
+﻿using System;
 
-// while loop : The while loop is used to repeat a section of code an "unknown" number of times until a specific condition is met
-// String name = "";
-// while (name == "")
-// {
-// Console.WriteLine("Input a car name");
-// name = Console.ReadLine();
-// }
+Random random = new Random(); // to generate random value
+bool playAgain = true;
+int min = 1; // minimum value to guess
+int max = 100; // maximum value to guess
+int guess; // the guessed value from the user
+int number; // random number to be guessed or number we generate for user to guess
+int guesses; // number of guesses by user
+String response;
 
-// For loop : "For" Loop is used to repeat a specific block of code a "known" number of times
-// list all natural numbers using a for loop
-// for (int i = 0; i < 10; i+=2)
-// {
-// Console.WriteLine(i);
-// }
-
-// nested loops is a loop inside a loop
-Console.WriteLine("How many rows?");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("How many columns?");
-int columns = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Enter an alphabet");
-String alphabet = Console.ReadLine();
-for (int i = 0; i < rows; i++)
+while (playAgain) // as long as a user wants to play again , the while loop keeps running
 {
-    for (int j = 0; j < columns; j++)
+    guess = 0;
+    guesses = 0;
+    number = random.Next(min, max + 1);
+    while (guess != number) // if the number the user guessed is not the same as the randomly generated number, run a while loop
     {
-        Console.Write(alphabet); 
+        Console.WriteLine("Guess a number between " + min + " and " + max + " : ");
+        guess = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Your guess is : " + guess);
+        if (guess > number)
+        {
+            Console.WriteLine(guess + " is too high");
+        }
+        else if (guess < number)
+        {
+            Console.WriteLine(guess + " is too low");
+        }
+        guesses++;
     }
-    Console.WriteLine();
+    Console.WriteLine("Number is actually : " + number);
+    Console.WriteLine("You are CORRECT!");
+    Console.WriteLine("You guessed " + guesses + " times");
+    Console.WriteLine("Would you like to play again? (Y/N): ");
+    response = Console.ReadLine();
+    response = response.ToUpper();
+    if (response == "Y")
+    {
+        playAgain = true;
+    }
+    else
+    {
+        playAgain = false;
+    }
 }
-
-
+Console.WriteLine("Thanks for playing");
 Console.ReadKey();
