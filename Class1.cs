@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    static class Class1
+    public class Class1 : ArithmeticOperation
     {
-        static double division(double a, double b)
+        double k;
+        double j;
+        public Class1(double c, double d) : base(c, d)
         {
-            double result = a / b;
-            Console.WriteLine(result);
-            return result;
+            this.k = c;
+            this.j = d;
         }
+
+        public void modulus()
+        {
+            double result = k % j;
+            Console.WriteLine(result);
+        }
+
     }
 }

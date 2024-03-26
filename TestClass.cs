@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    static class TestClass
+    public class TestClass
     {
-        public static void division(double a, double b)
+        public void division(double a, double b)
         {
             double result = a / b;
             Console.WriteLine(result);
         }
 
-        public static void addition()
+        private void addition()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace ConsoleApp
             }
         }
 
-        public static void multiDimensionalArray()
+        public void multiDimensionalArray()
         {
             //String[] greeting = { "Hello", "Hi", "Bonjour", "Buenos Dias" };
             String[,] greetings =
@@ -56,7 +56,7 @@ namespace ConsoleApp
             //Console.WriteLine(greetings[1, 1]);
         }
 
-        public static void matrix()
+        public void matrix()
         {
             int[,,] matrtrix2 =
             {
@@ -72,19 +72,19 @@ namespace ConsoleApp
             }
         }
 
-        public static void conditionalOperator(int age)
+        public void conditionalOperator(int age)
         {
             string message = (age == 30) ? "Age is okay" : "age is not okay";
             Console.WriteLine(message);
         }
 
-        public static void multiplication(double a, double b)
+        public void multiplication(double a, double b)
         {
             double result = a * b;
             Console.WriteLine(result);
         }
 
-        public static void sayHello(int greetingType)
+        public void sayHello(int greetingType)
         {
             String[] greeting = { "Hello", "Hi", "Bonjour", "Buenos Dias" };
             if (greetingType == 0)
@@ -103,6 +103,11 @@ namespace ConsoleApp
             {
                 Console.WriteLine(greeting[3]);
             }
+        }
+
+        public void accessAddition()
+        {
+            addition();
         }
     }
 }
