@@ -22,5 +22,11 @@ namespace ConsoleApp
             Console.WriteLine(result);
         }
 
+        public override void addition()
+        {
+            double result = (k + j) + k;
+            Console.WriteLine(result);
+        }
+
     }
 }

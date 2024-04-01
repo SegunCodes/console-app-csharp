@@ -25,7 +25,7 @@ namespace ConsoleApp
             Console.WriteLine(result);
         }
 
-        public void addition()
+        public virtual void addition()
         {
             double result = a + b;
             Console.WriteLine(result);
