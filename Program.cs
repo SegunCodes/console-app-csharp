@@ -1,87 +1,149 @@
 ﻿using ConsoleApp;
-using System;
-using System.Security.Cryptography;
+using System.Collections.Generic;
+//Data structure and algorithm : stack, queue, array ,list
+// LISTS : List is similar to array but it can increase or decrease dynamically in size.
 
-ArithmeticOperation operation = new ArithmeticOperation(4, 5);
-operation.division();
+String[] cars = new String[3];
 
-Class1 child = new Class1(6, 4);
-child.addition(); // this is a function in its parent class called ArithmeticOperation
-child.modulus(); // this is a function in class1
+cars[0] = "Honda";
+cars[1] = "Toyota";
+cars[2] = "RR";
 
-Class2 grandChild = new Class2(5,3);
-grandChild.modulus();    // this is a function in its parent class called class1
-grandChild.addition();  // this is a function in its grandparent class called ArithmeticOperation
-
-//method overriding, to override an inherited method, it must be abstract or virtual. It can also be used to override the ToString method
-
-// Abstraction in OOP is used to hide unnecessary information and display only necessary information to the users interacting
-Class4 class4 = new Class4();
-class4.students();
-class4.student(4);
-
-//interface is similar to abstraction just that for every method in an interface, it must be implemented by it's child class
-Class5 class5 = new Class5();
-class5.teacher();
-
-//ToString converts a datatype to a string
-Human human = new Human("74", "80", "34");
-Console.WriteLine(human);
-
-Animal[] animals = new Animal[2];
-animals[0] = new Goat();
-animals[1] = new Cat();
-foreach (Animal animal in animals)
+foreach (var item in cars)
 {
-    animal.makeSound();
+    Console.WriteLine(item);
 }
-//Poly - plenty
-//morphology - structure
-//polymorphism - many different forms
+
+// LIST
+
+List<String> phone = new List<string>();
+phone.Add("iPhone");
+phone.Add("Samsung N20");
+phone.Add("Google Pixel");
+phone.Add("itel");
+//phone.Remove("itel");
+phone.Insert(3, "Tecno Phantom");
+phone.Sort();
+phone.Reverse();
+Console.WriteLine(phone.Count());
+Console.WriteLine(phone.IndexOf("iPhone"));
+//phone.Clear();
+
+foreach (var item in phone)
+{
+    Console.WriteLine(item);
+}
+
+//Console.WriteLine("What is your name");
+//string name = Console.ReadLine();
+//Console.WriteLine("What is your gender");
+//string gender = Console.ReadLine();
+Console.WriteLine();
+// LIST OF OBJECT
+List<User> users = new List<User>();
+//users.Add(new User(name,gender));
+users.Add(new User("Jon snow", "male"));
+
+foreach (var user in users)
+{
+    Console.WriteLine(user);
+}
+
+Phone phone2 = new Phone("Samsung", "S24");
+Console.WriteLine(phone2.brandName);
+Console.WriteLine(phone2.nameOfPhone);
+
+Laptop laptop = new Laptop("Macbook Pro");
+Console.WriteLine(laptop.model);
+
+//getter and setter
+// get - used to return a value
+// set - used to assign a value
+// you use getters and setters when you want the value of a variable to be assigned to a property or method
+
+//enums is a 'special' class that contains fixed values or constants
+Console.WriteLine((int)Planets.Mercury);
+
+//generics : is not specific to a data type.
+int[] intArray = { 1, 2, 3, 4 };
+double[] doubleArray = { 1.1, 2.22, 3.33, 4.44 };
+string[] stringArray = { "a", "b", "c", "d" };
+
+displayData(intArray);
+displayData(doubleArray);
+displayData(stringArray);
+
+static void displayData<T>(T[] array)
+{
+    foreach (T item in array)
+    {
+        Console.WriteLine(item);
+    }
+}
+
 
 Console.ReadKey();
 
-
-class Human
-{ 
-    string height;
-    string weight;
-    string age;
-    public Human(string height, string weight, string age) {
-        this.height = height;
-        this.age = age;
-        this.weight = weight;
+class User
+{
+    public String username;
+    public String gender;
+    public User(string username, string gender)
+    {
+        this.username = username;
+        this.gender = gender;
     }
 
     public override string ToString()
     {
-        string message = "The " + age + " year old human has a weight of " + weight + " kg and a height of " + height + " cm";
+        string message = "You are a " + gender + " and your name is " + username;
         return message;
     }
+}
+
+
+class Phone
+{
+    private String brand;
+    private String name;
+    public Phone(string brand, string name)
+    {
+        this.brand = brand;
+        this.name = name;
+    }
+
+    public string brandName
+    {
+        get { return brand; }
+        set { brand = value; }
+    }
+
+    public string nameOfPhone
+    {
+        get { return name; }
+        set { name = value; }
+    }
 
 }
 
-// POLYMORPHISM
-class Animal
+class Laptop
 {
-    public virtual void makeSound()
+    public string model { get; set; }
+    public Laptop(string model)
     {
-        Console.WriteLine("Animal has made a sound");
+        this.model = model;
     }
 }
 
-class Goat : Animal
+enum Planets
 {
-    public override void makeSound()
-    {
-        Console.WriteLine("Goat has bleat");
-    }
-}
-
-class Cat : Animal
-{
-    public override void makeSound()
-    {
-        Console.WriteLine("Cat has meowed");
-    }
+    Mercury = 1,
+    Venus = 2,
+    Earth = 3,
+    Mars = 4,
+    Jupiter = 5,
+    Saturn = 6,
+    Uranus = 7,
+    Neptune = 8,
+    Pluto = 9,
 }
